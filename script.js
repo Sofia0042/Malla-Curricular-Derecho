@@ -100,4 +100,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* Agrupar por semestre / sección */
   [...new Set(courses.map(c=>c.sem))].forEach(sem => {
-    con
+    const sec=document.createElement("section");
+    sec.innerHTML=`<h2>${sem}</h2><div class="semester"></div>`;
+    app.appendChild(sec);
+
+    courses.filter(c=>c.sem===sem).forEach(c=>{
+      const div=document.createElement("div");
+      div.className="course locked";
+      div.dataset.code=c.code;
+      div.dataset.pre=c.pre.join(",");
+      div.innerHTML=`
+        <span class="code">${c.code}</span>
+        <span class="name">${c.name}</span>
+        <span class="credits">${c.credits} cr.</span>`;
+      div.addEventListener("click",()=>toggle(div));
+      sec.querySelector(".semester").appendChild(div);
+    });
+  });
+
+  /* Marcar / desmarcar aprobado */
+  function toggle(el){
+    if(el.classList.contains("locked")) return;
+    const code=el.dataset.code;
+    if(passed.has(code)){
+      passed.delete(code);
+      el.classList.remove("passed");
+    }else{
+      passed.add(code);
+      el.classList.add("passed");
+    }
+    updateLocks();
+  }
+
+  /* Re‑calcular créditos aprobados */
+  function getCreditTotals(){
+    const tot={oblig:0,opt:0,fofu:0};
+    passed.forEach(code=>{
+      const c=map[code];
+      if(c) tot[c.cat]+=c.credits;
+    });
+    return tot;
+  }
+
+  /* Habilitar / deshabilitar ramos */
+  function updateLocks(){
+    const totals=getCreditTotals();
+    document.querySelectorAll(".course").forEach(el=>{
+      const code=el.dataset.code;
+      const prereqs=el.dataset.pre?el.dataset.pre.split(",").filter(Boolean):[];
+
+      let unlocked=true;
+      if(code==="DER1100"){                                         // ► Licenciatura
+        unlocked = totals.oblig>=170 && totals.opt>=6 && totals.fofu>=10;
+      }else{
+        unlocked = prereqs.every(p=>passed.has(p));
+      }
+
+      if(passed.has(code)){
+        el.classList.remove("locked");
+      }else if(unlocked){
+        el.classList.remove("locked");
+      }else{
+        el.classList.add("locked");
+        el.classList.remove("passed");
+        passed.delete(code);
+      }
+    });
+  }
+
+  updateLocks();   // primera evaluación
+});
