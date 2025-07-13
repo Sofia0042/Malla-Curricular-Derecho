@@ -9,38 +9,20 @@
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
 
-body{
-  background:var(--rosa-claro);
-  padding:2rem;
-  color:#333;
-}
+body{background:var(--rosa-claro);padding:2rem;color:#333}
+h1{text-align:center;margin-bottom:2rem;font-size:2rem}
 
-h1{
-  text-align:center;
-  margin-bottom:2rem;
-  font-size:2rem;
-}
-
-section{
-  margin-bottom:3rem;
-}
-
-section h2{
-  font-size:1.3rem;
-  margin-bottom:1rem;
-  text-transform:uppercase;
-  letter-spacing:.5px;
-}
+section{margin-bottom:3rem}
+section h2{font-size:1.3rem;margin-bottom:1rem;text-transform:uppercase}
 
 .semester{
   display:flex;
-  flex-wrap:wrap;
+  flex-direction:column;          /* ► cada ramo en vertical */
   gap:1rem;
 }
 
-/* cuadro de ramo */
+/* --- cuadro de ramo --- */
 .course{
-  width:260px;
   padding:1rem;
   border:2px solid var(--rosa-border);
   border-radius:8px;
@@ -50,21 +32,14 @@ section h2{
   transition:transform .15s ease,background .15s ease;
 }
 
+.course:hover{background:var(--rosa-hover);transform:scale(1.02)}
+
 .course span.code{font-weight:700}
 .course span.name{display:block;margin-top:.25rem;font-size:.9rem}
-
-.course:hover{background:var(--rosa-hover);transform:scale(1.03)}
+.course span.credits{display:block;margin-top:.25rem;font-size:.8rem;color:#444}
 
 /* bloqueo / aprobado */
 .course.locked{opacity:.4;pointer-events:none}
-.course.locked::after{
-  content:"🔒";
-  position:absolute;top:8px;right:8px;font-size:1.1rem
-}
-.course.passed{
-  background:var(--rosa-passed);color:#fff
-}
-.course.passed::after{
-  content:"✓";
-  position:absolute;top:8px;right:8px;font-size:1.1rem
-}
+.course.locked::after{content:"🔒";position:absolute;top:8px;right:8px;font-size:1.1rem}
+.course.passed{background:var(--rosa-passed);color:#fff}
+.course.passed::after{content:"✓";position:absolute;top:8px;right:8px;font-size:1.1rem}
