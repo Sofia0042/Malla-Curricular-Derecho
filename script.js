@@ -80,16 +80,18 @@ const courses = [
   {code:"DER1100",name:"Licenciatura",sem:"10° Semestre",pre:[],credits:20,cat:"oblig"},
 
   /* === Formación Fundamental (cat:'fofu') === */
-  {code:"FOFU1",name:"Antropología Cristiana",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
-  {code:"FOFU2",name:"Ética Cristiana",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
-  {code:"FOFU3",name:"Formación Fundamental III",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
-  {code:"FOFU4",name:"Formación Fundamental IV",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
-  {code:"FOFU5",name:"Formación Fundamental V",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
+{code:"FOFU1", name:"Formación Fundamental I",   sem:"FOFUS y Optativos", pre:[], credits:2, cat:"fofu"},
+{code:"FOFU2", name:"Formación Fundamental II",  sem:"FOFUS y Optativos", pre:[], credits:2, cat:"fofu"},
+{code:"FOFU3", name:"Formación Fundamental III", sem:"FOFUS y Optativos", pre:[], credits:2, cat:"fofu"},
+{code:"FOFU4", name:"Formación Fundamental IV",  sem:"FOFUS y Optativos", pre:[], credits:2, cat:"fofu"},
+{code:"FOFU5", name:"Formación Fundamental V",   sem:"FOFUS y Optativos", pre:[], credits:2, cat:"fofu"},
+
 
   /* === Cursos Optativos (cat:'opt') === */
-  {code:"OPT1",name:"Optativo I",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"opt"},
-  {code:"OPT2",name:"Optativo II",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"opt"},
-  {code:"OPT3",name:"Optativo III",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"opt"}
+{code:"OPT1", name:"Optativo I",   sem:"FOFUS y Optativos", pre:[], credits:2, cat:"opt"},
+{code:"OPT2", name:"Optativo II",  sem:"FOFUS y Optativos", pre:[], credits:2, cat:"opt"},
+{code:"OPT3", name:"Optativo III", sem:"FOFUS y Optativos", pre:[], credits:2, cat:"opt"},
+
 ];
 
 /* ---------- Render y lógica ---------- */
