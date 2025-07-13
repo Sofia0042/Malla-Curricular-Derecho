@@ -1,83 +1,162 @@
+<link href="https://fonts.googleapis.com/css2?family=Bryndan+White&family=Rosario&display=swap" rel="stylesheet" />
+
 /* ---------- Colores ---------- */
-:root{
-  --rosa-fondo:#ffe6f7;
-  --rosa-marco:#ff6fbd;
-  --rosa-ramo:#ffffff;
-  --rosa-hover:#ffe0f2;
-  --rosa-ok:#f06292;
+:root {
+  --fondo-pagina: #faf4ea;
+  --color-semestre: #99c2c6;
+  --color-titulo: #bd4829;
+  --color-texto: #49241f;
+  --fondo-formacion-titulo: #f4a590;
+  --fondo-ramo: #fae1ce;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
-
-body{
-  background:var(--rosa-fondo);
-  padding:2rem;
-  color:#222;
-  overflow-x:auto;          /* ► si la malla es más ancha que la pantalla, se desplaza HORIZONTALMENTE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Rosario', sans-serif;
+  color: var(--color-texto);
 }
 
-h1{
-  text-align:center;
-  margin-bottom:2rem;
-  font-size:2.2rem;
+body {
+  background: var(--fondo-pagina);
+  padding: 2rem;
+  overflow-x: auto; /* para scroll horizontal si es necesario */
+}
+
+/* Título general */
+h1 {
+  font-family: 'Bryndan White', cursive;
+  font-size: 79.8px;
+  color: var(--color-titulo);
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 /* ---------- CONTENEDOR de filas ---------- */
-#app{
-  display:flex;
-  flex-direction:column;   /* ► cada section es una FILA */
-  gap:1rem;
+#app {
+  display: flex;
+  flex-direction: column; /* filas verticales */
+  gap: 0.4px; /* espacio entre filas */
 }
 
 /* ---------- FILA de semestre ---------- */
-section{
-  display:flex;
-  align-items:flex-start;  /* etiqueta semestre alineada arriba */
-  gap:1rem;
+section {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4px; /* espacio entre columnas */
 }
 
 /* etiqueta “1 SEMESTRE” “2 SEMESTRE”…  */
-section h2{
-  min-width:140px;
-  padding:.6rem .8rem;
-  border:2px solid var(--rosa-marco);
-  border-radius:8px;
-  font-size:1rem;
-  text-transform:uppercase;
-  text-align:center;
-  line-height:1.2;
+section h2 {
+  min-width: 140px;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  font-size: 19px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
+  background-color: var(--color-semestre);
+  color: var(--color-texto);
+  border: none;
 }
 
 /* contenedor de ramos (hacia la derecha, en línea) */
-.semester{
-  display:flex;
-  gap:1rem;
+.semester {
+  display: flex;
+  gap: 0.4px;
 }
 
 /* ---------- cuadro individual de ramo ---------- */
-.course{
-  background:var(--rosa-ramo);
-  border:2px solid var(--rosa-marco);
-  border-radius:8px;
-  padding:.6rem .8rem;
-  cursor:pointer;
-  position:relative;
-  transition:background .15s ease,transform .15s ease;
-  min-width:160px;
+.course {
+  background: var(--fondo-ramo);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s ease, transform 0.15s ease;
+  min-width: 160px;
+  font-size: 19px;
+  color: var(--color-texto);
+  border: none;
 }
 
-.course:hover{background:var(--rosa-hover);transform:scale(1.03)}
-
-.course span.code{font-weight:700;font-size:.85rem}
-.course span.name{display:block;margin-top:.12rem;font-size:.78rem;white-space:normal;word-break:break-word}
-.course span.credits{
-  display:none;   /* ⇦ oculta la línea de créditos */
+.course:hover {
+  background: #f9d7cc; /* un ligero cambio para hover */
+  transform: scale(1.03);
 }
 
+.course span.code {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.course span.name {
+  display: block;
+  margin-top: 0.12rem;
+  font-size: 0.78rem;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.course span.credits {
+  display: none; /* oculta créditos */
+}
 
 /* ---------- Estados ---------- */
-.course.locked{opacity:.35;pointer-events:none}
-.course.locked::after{content:"🔒";position:absolute;top:6px;right:6px}
+.course.locked {
+  opacity: 0.35;
+  pointer-events: none;
+}
 
-.course.passed{background:var(--rosa-ok);color:#fff}
-.course.passed::after{content:"✓";position:absolute;top:6px;right:6px}
+.course.locked::after {
+  content: "🔒";
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+.course.passed {
+  background: var(--fondo-formacion-titulo);
+  color: var(--color-texto);
+}
+
+.course.passed::after {
+  content: "✓";
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+/* Estilo específico para títulos de Formación Fundamental y Optativos */
+.titulo-fundamental,
+.titulo-optativos {
+  background-color: var(--fondo-formacion-titulo);
+  color: var(--color-texto);
+  font-size: 19px;
+  font-weight: 700;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  min-width: 160px;
+  text-align: center;
+}
+
+/* Para que los ramos de formación fundamental y optativos tengan fondo igual */
+.fundamental-course,
+.optativo-course {
+  background-color: var(--fondo-ramo);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  font-size: 19px;
+  color: var(--color-texto);
+  border: none;
+  min-width: 160px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.fundamental-course:hover,
+.optativo-course:hover {
+  background: #f9d7cc;
+  transform: scale(1.03);
+}
