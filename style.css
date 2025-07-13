@@ -1,20 +1,20 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malla Curricular Derecho PUCV</title>
 
-  <!-- Fuentes Google: Playfair Display (título) y Aptos (cuerpo) (texto) -->
-  <link href="https://fonts.googleapis.com/css2?family=Bryndan+White&family=Rosario&display=swap" rel="stylesheet" />
+  <!-- Google Fonts: Playfair Display for the main title -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
 
   <style>
     /* ---------- Colores ---------- */
     :root {
       --fondo-pagina: #faf4ea;
       --color-semestre: #99c2c6;
-      --color-titulo:  #bd4829;
-      --color-texto:   #49241f;
+      --color-titulo: #bd4829;
+      --color-texto: #49241f;
       --fondo-formacion-titulo: #f4a590;
       --fondo-ramo: #fae1ce;
     }
@@ -23,19 +23,19 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Rosario', sans-serif;
+      font-family: "Aptos", "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif;
       color: var(--color-texto);
     }
 
     body {
       background: var(--fondo-pagina);
       padding: 2rem;
-      overflow-x: auto; /* desplazamiento horizontal si la malla es muy ancha */
+      overflow-x: auto;
     }
 
     /* ---------- Título principal ---------- */
     h1 {
-      font-family: 'Bryndan White', cursive;
+      font-family: "Playfair Display", serif;
       font-size: 79.8px;
       color: var(--color-titulo);
       text-align: center;
@@ -45,18 +45,18 @@
     /* ---------- CONTENEDOR de filas ---------- */
     #app {
       display: flex;
-      flex-direction: column; /* cada <section> es una FILA */
-      gap: 0.4px; /* espacio vertical entre filas */
+      flex-direction: column;
+      gap: 0.4px;
     }
 
     /* ---------- FILA de semestre ---------- */
     section {
       display: flex;
-      align-items: flex-start; /* la etiqueta de semestre se alinea arriba */
-      gap: 0.4px; /* espacio horizontal entre columnas */
+      align-items: flex-start;
+      gap: 0.4px;
     }
 
-    /* etiqueta "1° SEMESTRE", "2° SEMESTRE", etc. */
+    /* etiqueta de semestre */
     section h2 {
       min-width: 140px;
       padding: 0.6rem 0.8rem;
@@ -67,9 +67,10 @@
       line-height: 1.2;
       background: var(--color-semestre);
       color: var(--color-texto);
+      font-family: "Aptos", "Segoe UI", "Roboto", sans-serif;
     }
 
-    /* contenedor de ramos (hacia la derecha, en línea) */
+    /* contenedor de ramos */
     .semester {
       display: flex;
       gap: 0.4px;
@@ -88,7 +89,7 @@
     }
 
     .course:hover {
-      background: #f9d7cc; /* tono más claro al pasar el mouse */
+      background: #f9d7cc;
       transform: scale(1.03);
     }
 
@@ -101,37 +102,16 @@
       display: block;
       margin-top: 0.12rem;
       font-size: 0.78rem;
-      white-space: normal;
       word-break: break-word;
     }
 
-    .course span.credits {
-      display: none; /* ocultar créditos si no se quieren mostrar */
-    }
+    .course span.credits { display: none; }
 
     /* ---------- Estados opcionales ---------- */
-    .course.locked {
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    .course.locked::after {
-      content: "🔒";
-      position: absolute;
-      top: 6px;
-      right: 6px;
-    }
-
-    .course.passed {
-      background: var(--fondo-formacion-titulo);
-    }
-
-    .course.passed::after {
-      content: "✓";
-      position: absolute;
-      top: 6px;
-      right: 6px;
-    }
+    .course.locked { opacity: 0.35; pointer-events: none; }
+    .course.locked::after { content: "🔒"; position: absolute; top: 6px; right: 6px; }
+    .course.passed { background: var(--fondo-formacion-titulo); }
+    .course.passed::after { content: "✓"; position: absolute; top: 6px; right: 6px; }
 
     /* ---------- Títulos especiales ---------- */
     .titulo-fundamental,
@@ -144,9 +124,10 @@
       border-radius: 8px;
       min-width: 160px;
       text-align: center;
+      font-family: "Aptos", "Segoe UI", "Roboto", sans-serif;
     }
 
-    /* ramos de formación fundamental y optativos (mismo fondo que los demás) */
+    /* ramos de formación fundamental y optativos */
     .fundamental-course,
     .optativo-course {
       background: var(--fondo-ramo);
@@ -188,7 +169,7 @@
       </div>
     </section>
 
-    <!-- …continúa agregando más secciones de semestres según necesites… -->
+    <!-- …continúa agregando secciones de semestres… -->
 
     <!-- ------------------ FORMACIÓN FUNDAMENTAL ------------------ -->
     <section>
