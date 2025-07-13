@@ -133,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* Re‑calcular créditos aprobados */
+    /* Re‑calcular créditos aprobados */
   function getCreditTotals(){
     const tot={oblig:0,opt:0,fofu:0};
     passed.forEach(code=>{
@@ -150,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const prereqs=el.dataset.pre?el.dataset.pre.split(",").filter(Boolean):[];
 
       let unlocked=true;
-      if(code==="DER1100"){                                         // ► Licenciatura
+      if(code==="DER1100"){ // ► Licenciatura
         unlocked = totals.oblig>=170 && totals.opt>=6 && totals.fofu>=10;
       }else{
         unlocked = prereqs.every(p=>passed.has(p));
