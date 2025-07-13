@@ -70,7 +70,10 @@ section h2{
 
 .course span.code{font-weight:700;font-size:.85rem}
 .course span.name{display:block;margin-top:.12rem;font-size:.78rem;white-space:normal;word-break:break-word}
-.course span.credits{display:block;margin-top:.2rem;font-size:.7rem;color:#555}
+.course span.credits{
+  display:none;   /* ⇦ oculta la línea de créditos */
+}
+
 
 /* ---------- Estados ---------- */
 .course.locked{opacity:.35;pointer-events:none}
