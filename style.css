@@ -1,88 +1,80 @@
-/* ---- colores base ---- */
+/* ---------- Colores ---------- */
 :root{
-  --rosa-base:#ffe6f7;       /* fondo general */
-  --rosa-col:#fdd1eb;        /* fondo tarjeta semestre */
-  --rosa-borde:#ff6fbd;      /* bordes tarjeta y cuadro */
-  --rosa-cuadro:#ffffff;     /* fondo cuadro ramo */
-  --rosa-hover:#ffe0f2;      /* hover cuadro */
-  --rosa-ok:#f06292;         /* ramo aprobado */
+  --rosa-fondo:#ffe6f7;
+  --rosa-marco:#ff6fbd;
+  --rosa-ramo:#ffffff;
+  --rosa-hover:#ffe0f2;
+  --rosa-ok:#f06292;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
 
 body{
-  background:var(--rosa-base);
+  background:var(--rosa-fondo);
   padding:2rem;
-  color:#333;
+  color:#222;
+  overflow-x:auto;          /* ► si la malla es más ancha que la pantalla, se desplaza HORIZONTALMENTE */
 }
 
-/* ---------- título ---------- */
 h1{
   text-align:center;
   margin-bottom:2rem;
-  font-size:2rem;
+  font-size:2.2rem;
 }
 
-/* ---------- contenedor columnas ---------- */
+/* ---------- CONTENEDOR de filas ---------- */
 #app{
   display:flex;
-  flex-wrap:wrap;           /* varias filas si hay muchas columnas */
-  gap:2rem;
-  justify-content:center;
+  flex-direction:column;   /* ► cada section es una FILA */
+  gap:1rem;
 }
 
-/* ---------- tarjeta de semestre ---------- */
+/* ---------- FILA de semestre ---------- */
 section{
-  flex:1 1 250px;           /* mínimo 250 px, crece si hay espacio */
-  background:var(--rosa-col);
-  border:2px solid var(--rosa-borde);
-  border-radius:12px;
-  padding:1rem;
-  max-width:300px;
+  display:flex;
+  align-items:flex-start;  /* etiqueta semestre alineada arriba */
+  gap:1rem;
 }
 
-/* título de semestre */
+/* etiqueta “1 SEMESTRE” “2 SEMESTRE”…  */
 section h2{
-  text-align:center;
-  margin-bottom:1rem;
-  font-size:1.1rem;
+  min-width:140px;
+  padding:.6rem .8rem;
+  border:2px solid var(--rosa-marco);
+  border-radius:8px;
+  font-size:1rem;
   text-transform:uppercase;
-  color:#dd2e8b;
+  text-align:center;
+  line-height:1.2;
 }
 
-/* lista vertical de ramos dentro de la tarjeta */
+/* contenedor de ramos (hacia la derecha, en línea) */
 .semester{
   display:flex;
-  flex-direction:column;
-  gap:.75rem;
+  gap:1rem;
 }
 
 /* ---------- cuadro individual de ramo ---------- */
 .course{
-  background:var(--rosa-cuadro);
-  border:2px solid var(--rosa-borde);
+  background:var(--rosa-ramo);
+  border:2px solid var(--rosa-marco);
   border-radius:8px;
-  padding:.65rem .75rem;
+  padding:.6rem .8rem;
   cursor:pointer;
   position:relative;
   transition:background .15s ease,transform .15s ease;
+  min-width:160px;
 }
 
-.course:hover{background:var(--rosa-hover);transform:scale(1.02)}
+.course:hover{background:var(--rosa-hover);transform:scale(1.03)}
 
-/* texto dentro del cuadro */
 .course span.code{font-weight:700;font-size:.85rem}
-.course span.name{display:block;margin-top:.1rem;font-size:.78rem}
-.course span.credits{display:block;margin-top:.2rem;font-size:.72rem;color:#555}
+.course span.name{display:block;margin-top:.12rem;font-size:.78rem;white-space:normal;word-break:break-word}
+.course span.credits{display:block;margin-top:.2rem;font-size:.7rem;color:#555}
 
-/* ---------- estados ---------- */
-/* bloqueado */
-.course.locked{opacity:.4;pointer-events:none}
-.course.locked::after{content:"🔒";position:absolute;top:6px;right:6px;font-size:1rem}
+/* ---------- Estados ---------- */
+.course.locked{opacity:.35;pointer-events:none}
+.course.locked::after{content:"🔒";position:absolute;top:6px;right:6px}
 
-/* aprobado */
-.course.passed{
-  background:var(--rosa-ok);
-  color:#fff;
-}
-.course.passed::after{content:"✓";position:absolute;top:6px;right:6px;font-size:1rem}
+.course.passed{background:var(--rosa-ok);color:#fff}
+.course.passed::after{content:"✓";position:absolute;top:6px;right:6px}
