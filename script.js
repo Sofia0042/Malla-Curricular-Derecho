@@ -2,37 +2,37 @@
 const courses = [
   /* === OBLIGATORIOS (cat:'oblig') === */
   // 1º Sem.
-  {code:"DER1010",name:"Historia del Pens. Político y Teoría del Estado",sem:"1° Semestre",pre:[],credits:4,cat:"oblig"},
-  {code:"DER1011",name:"Fuentes, Proceso y Bienes en el Der. Romano",sem:"1° Semestre",pre:[],credits:3,cat:"oblig"},
+  {code:"DER1010",name:"Historia del Pensamiento Político y Teoría del Estado",sem:"1° Semestre",pre:[],credits:4,cat:"oblig"},
+  {code:"DER1011",name:"Fuentes, Proceso y Bienes en el Derecho Romano",sem:"1° Semestre",pre:[],credits:3,cat:"oblig"},
   {code:"DER1012",name:"Historia del Derecho Antiguo y Medieval",sem:"1° Semestre",pre:[],credits:3,cat:"oblig"},
   {code:"DER1013",name:"Fundamentos de Filosofía Práctica",sem:"1° Semestre",pre:[],credits:3,cat:"oblig"},
   {code:"DER1015",name:"Introducción al Estudio del Derecho Positivo Chileno",sem:"1° Semestre",pre:[],credits:3,cat:"oblig"},
   {code:"DER1016",name:"Taller de Memoria 1",sem:"1° Semestre",pre:[],credits:1,cat:"oblig"},
-  {code:"ING9001",name:"Inglés 1",sem:"1° Semestre",pre:[],credits:2,cat:"oblig"},
+  {code:"ING9001",name:"Inglés I",sem:"1° Semestre",pre:[],credits:2,cat:"oblig"},
 
   // 2º Sem.
-  {code:"DER1020",name:"Teoría de la Constitución e Hist. Política y Const. de Chile",sem:"2° Semestre",pre:["DER1010"],credits:4,cat:"oblig"},
+  {code:"DER1020",name:"Teoría de la Constitución e Historia Política y Constucional de Chile",sem:"2° Semestre",pre:["DER1010"],credits:4,cat:"oblig"},
   {code:"DER1021",name:"Familia y Patrimonio en el Derecho Romano",sem:"2° Semestre",pre:["DER1011"],credits:4,cat:"oblig"},
   {code:"DER1022",name:"Historia del Derecho Moderno y Contemporáneo",sem:"2° Semestre",pre:["DER1012"],credits:3,cat:"oblig"},
   {code:"DER1023",name:"Teoría de la Normatividad",sem:"2° Semestre",pre:["DER1013"],credits:3,cat:"oblig"},
   {code:"DER1024",name:"Judicatura",sem:"2° Semestre",pre:["DER1015"],credits:3,cat:"oblig"},
-  {code:"ING9002",name:"Inglés 2",sem:"2° Semestre",pre:["ING9001"],credits:2,cat:"oblig"},
+  {code:"ING9002",name:"Inglés II",sem:"2° Semestre",pre:["ING9001"],credits:2,cat:"oblig"},
 
   // 3º Sem.
   {code:"DER1030",name:"Derecho Constitucional Orgánico",sem:"3° Semestre",pre:["DER1015","DER1020","DER1010","DER1011","DER1012","DER1013"],credits:3,cat:"oblig"},
   {code:"DER1031",name:"Derecho Internacional Público",sem:"3° Semestre",pre:["DER1015","DER1020","DER1010","DER1011","DER1012","DER1013"],credits:4,cat:"oblig"},
   {code:"DER1032",name:"Negocio Jurídico",sem:"3° Semestre",pre:["DER1015","DER1010","DER1021","DER1011","DER1012","DER1013"],credits:4,cat:"oblig"},
-  {code:"DER2034",name:"Estrat. de Producción del Discurso Oral",sem:"3° Semestre",pre:["DER1015","DER1010","DER1011","DER1012","DER1013"],credits:3,cat:"oblig"},
+  {code:"DER2034",name:"Estrategias de Producción del Discurso Oral",sem:"3° Semestre",pre:["DER1015","DER1010","DER1011","DER1012","DER1013"],credits:3,cat:"oblig"},
   {code:"DER1035",name:"Tutela Judicial Efectiva y Debido Proceso",sem:"3° Semestre",pre:["DER1024","DER1010","DER1011","DER1012","DER1013","DER1015"],credits:3,cat:"oblig"},
   {code:"DER1036",name:"Taller de Memoria 2",sem:"3° Semestre",pre:["DER1016"],credits:1,cat:"oblig"},
-  {code:"ING9003",name:"Inglés 3",sem:"3° Semestre",pre:["ING9002"],credits:2,cat:"oblig"},
+  {code:"ING9003",name:"Inglés III",sem:"3° Semestre",pre:["ING9002"],credits:2,cat:"oblig"},
 
   // 4º Sem.
   {code:"DER1040",name:"Derechos Fundamentales",sem:"4° Semestre",pre:["DER1015","DER1010","DER1020","DER1011","DER1012","DER1013"],credits:3,cat:"oblig"},
   {code:"DER1041",name:"Bienes",sem:"4° Semestre",pre:["DER1015","DER1032","DER1021","DER1010","DER1011","DER1012","DER1013"],credits:4,cat:"oblig"},
   {code:"DER1042",name:"Disposiciones Comunes a Todo Procedimiento",sem:"4° Semestre",pre:["DER1035","DER1015","DER1010","DER1011","DER1012","DER1013"],credits:4,cat:"oblig"},
   {code:"DER1043",name:"Teoría del Delito",sem:"4° Semestre",pre:["DER1015","DER1023","DER1010","DER1011","DER1012","DER1013"],credits:4,cat:"oblig"},
-  {code:"ING9004",name:"Inglés 4",sem:"4° Semestre",pre:["ING9003"],credits:2,cat:"oblig"},
+  {code:"ING9004",name:"Inglés IV",sem:"4° Semestre",pre:["ING9003"],credits:2,cat:"oblig"},
 
   // 5º Sem.
   {code:"DER1050",name:"Bases del Derecho Administrativo",sem:"5° Semestre",pre:["DER1030","DER1040"],credits:3,cat:"oblig"},
@@ -53,8 +53,8 @@ const courses = [
   {code:"DER1066",name:"Enseñanza Clínica: Negociación y Formas Autocompositivas",sem:"6° Semestre",pre:["DER1035"],credits:2,cat:"oblig"},
 
   // 7º Sem.
-  {code:"DER1070",name:"Control y Respons. de la Administración del Estado",sem:"7° Semestre",pre:["DER1057","DER1060","DER1063"],credits:3,cat:"oblig"},
-  {code:"DER1071",name:"Introd. al Der. Comercial y Org. Jurídica de la Empresa",sem:"7° Semestre",pre:["DER1015","DER1010","DER1011","DER1012","DER1013"],credits:3,cat:"oblig"},
+  {code:"DER1070",name:"Control y Responsabilidad de la Administración del Estado",sem:"7° Semestre",pre:["DER1057","DER1060","DER1063"],credits:3,cat:"oblig"},
+  {code:"DER1071",name:"Introducción al Derecho Comercial y Organización Jurídica de la Empresa",sem:"7° Semestre",pre:["DER1015","DER1010","DER1011","DER1012","DER1013"],credits:3,cat:"oblig"},
   {code:"DER1072",name:"Derecho de los Mercados Financieros",sem:"7° Semestre",pre:["DER1052","DER1062"],credits:3,cat:"oblig"},
   {code:"DER1073",name:"Contratos en Particular",sem:"7° Semestre",pre:["DER1063","DER1053","DER1032","DER1041","DER1021"],credits:4,cat:"oblig"},
   {code:"DER1076",name:"Taller de Memoria 4",sem:"7° Semestre",pre:["DER1056"],credits:1,cat:"oblig"},
@@ -79,14 +79,14 @@ const courses = [
   // 10º Sem.
   {code:"DER1100",name:"Licenciatura",sem:"10° Semestre",pre:[],credits:20,cat:"oblig"},
 
-  /* === FOFUS (cat:'fofu') === */
+  /* === Formación Fundamental (cat:'fofu') === */
   {code:"FOFU1",name:"Antropología Cristiana",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
   {code:"FOFU2",name:"Ética Cristiana",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
-  {code:"FOFU3",name:"FOFU 3",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
-  {code:"FOFU4",name:"FOFU 4",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
-  {code:"FOFU5",name:"FOFU 5",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
+  {code:"FOFU3",name:"Formación Fundamental III",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
+  {code:"FOFU4",name:"Formación Fundamental IV",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
+  {code:"FOFU5",name:"Formación Fundamental V",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"fofu"},
 
-  /* === OPTATIVOS (cat:'opt') === */
+  /* === Cursos Optativos (cat:'opt') === */
   {code:"OPT1",name:"Optativo I",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"opt"},
   {code:"OPT2",name:"Optativo II",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"opt"},
   {code:"OPT3",name:"Optativo III",sem:"FOFUS y Optativos",pre:[],credits:2,cat:"opt"}
