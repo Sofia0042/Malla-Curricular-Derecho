@@ -1,162 +1,214 @@
-<link href="https://fonts.googleapis.com/css2?family=Bryndan+White&family=Rosario&display=swap" rel="stylesheet" />
+!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Curricular Derecho PUCV</title>
 
-/* ---------- Colores ---------- */
-:root {
-  --fondo-pagina: #faf4ea;
-  --color-semestre: #99c2c6;
-  --color-titulo: #bd4829;
-  --color-texto: #49241f;
-  --fondo-formacion-titulo: #f4a590;
-  --fondo-ramo: #fae1ce;
-}
+  <!-- Fuentes Google: Bryndan White (título) y Rosario (texto) -->
+  <link href="https://fonts.googleapis.com/css2?family=Bryndan+White&family=Rosario&display=swap" rel="stylesheet" />
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Rosario', sans-serif;
-  color: var(--color-texto);
-}
+  <style>
+    /* ---------- Colores ---------- */
+    :root {
+      --fondo-pagina: #faf4ea;
+      --color-semestre: #99c2c6;
+      --color-titulo:  #bd4829;
+      --color-texto:   #49241f;
+      --fondo-formacion-titulo: #f4a590;
+      --fondo-ramo: #fae1ce;
+    }
 
-body {
-  background: var(--fondo-pagina);
-  padding: 2rem;
-  overflow-x: auto; /* para scroll horizontal si es necesario */
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Rosario', sans-serif;
+      color: var(--color-texto);
+    }
 
-/* Título general */
-h1 {
-  font-family: 'Bryndan White', cursive;
-  font-size: 79.8px;
-  color: var(--color-titulo);
-  text-align: center;
-  margin-bottom: 2rem;
-}
+    body {
+      background: var(--fondo-pagina);
+      padding: 2rem;
+      overflow-x: auto; /* desplazamiento horizontal si la malla es muy ancha */
+    }
 
-/* ---------- CONTENEDOR de filas ---------- */
-#app {
-  display: flex;
-  flex-direction: column; /* filas verticales */
-  gap: 0.4px; /* espacio entre filas */
-}
+    /* ---------- Título principal ---------- */
+    h1 {
+      font-family: 'Bryndan White', cursive;
+      font-size: 79.8px;
+      color: var(--color-titulo);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
-/* ---------- FILA de semestre ---------- */
-section {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.4px; /* espacio entre columnas */
-}
+    /* ---------- CONTENEDOR de filas ---------- */
+    #app {
+      display: flex;
+      flex-direction: column; /* cada <section> es una FILA */
+      gap: 0.4px; /* espacio vertical entre filas */
+    }
 
-/* etiqueta “1 SEMESTRE” “2 SEMESTRE”…  */
-section h2 {
-  min-width: 140px;
-  padding: 0.6rem 0.8rem;
-  border-radius: 8px;
-  font-size: 19px;
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 1.2;
-  background-color: var(--color-semestre);
-  color: var(--color-texto);
-  border: none;
-}
+    /* ---------- FILA de semestre ---------- */
+    section {
+      display: flex;
+      align-items: flex-start; /* la etiqueta de semestre se alinea arriba */
+      gap: 0.4px; /* espacio horizontal entre columnas */
+    }
 
-/* contenedor de ramos (hacia la derecha, en línea) */
-.semester {
-  display: flex;
-  gap: 0.4px;
-}
+    /* etiqueta "1° SEMESTRE", "2° SEMESTRE", etc. */
+    section h2 {
+      min-width: 140px;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      font-size: 19px;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.2;
+      background: var(--color-semestre);
+      color: var(--color-texto);
+    }
 
-/* ---------- cuadro individual de ramo ---------- */
-.course {
-  background: var(--fondo-ramo);
-  border-radius: 8px;
-  padding: 0.6rem 0.8rem;
-  cursor: pointer;
-  position: relative;
-  transition: background 0.15s ease, transform 0.15s ease;
-  min-width: 160px;
-  font-size: 19px;
-  color: var(--color-texto);
-  border: none;
-}
+    /* contenedor de ramos (hacia la derecha, en línea) */
+    .semester {
+      display: flex;
+      gap: 0.4px;
+    }
 
-.course:hover {
-  background: #f9d7cc; /* un ligero cambio para hover */
-  transform: scale(1.03);
-}
+    /* ---------- cuadro individual de ramo ---------- */
+    .course {
+      background: var(--fondo-ramo);
+      border-radius: 8px;
+      padding: 0.6rem 0.8rem;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.15s ease, transform 0.15s ease;
+      min-width: 160px;
+      font-size: 19px;
+    }
 
-.course span.code {
-  font-weight: 700;
-  font-size: 0.85rem;
-}
+    .course:hover {
+      background: #f9d7cc; /* tono más claro al pasar el mouse */
+      transform: scale(1.03);
+    }
 
-.course span.name {
-  display: block;
-  margin-top: 0.12rem;
-  font-size: 0.78rem;
-  white-space: normal;
-  word-break: break-word;
-}
+    .course span.code {
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
 
-.course span.credits {
-  display: none; /* oculta créditos */
-}
+    .course span.name {
+      display: block;
+      margin-top: 0.12rem;
+      font-size: 0.78rem;
+      white-space: normal;
+      word-break: break-word;
+    }
 
-/* ---------- Estados ---------- */
-.course.locked {
-  opacity: 0.35;
-  pointer-events: none;
-}
+    .course span.credits {
+      display: none; /* ocultar créditos si no se quieren mostrar */
+    }
 
-.course.locked::after {
-  content: "🔒";
-  position: absolute;
-  top: 6px;
-  right: 6px;
-}
+    /* ---------- Estados opcionales ---------- */
+    .course.locked {
+      opacity: 0.35;
+      pointer-events: none;
+    }
 
-.course.passed {
-  background: var(--fondo-formacion-titulo);
-  color: var(--color-texto);
-}
+    .course.locked::after {
+      content: "🔒";
+      position: absolute;
+      top: 6px;
+      right: 6px;
+    }
 
-.course.passed::after {
-  content: "✓";
-  position: absolute;
-  top: 6px;
-  right: 6px;
-}
+    .course.passed {
+      background: var(--fondo-formacion-titulo);
+    }
 
-/* Estilo específico para títulos de Formación Fundamental y Optativos */
-.titulo-fundamental,
-.titulo-optativos {
-  background-color: var(--fondo-formacion-titulo);
-  color: var(--color-texto);
-  font-size: 19px;
-  font-weight: 700;
-  padding: 0.6rem 0.8rem;
-  border-radius: 8px;
-  min-width: 160px;
-  text-align: center;
-}
+    .course.passed::after {
+      content: "✓";
+      position: absolute;
+      top: 6px;
+      right: 6px;
+    }
 
-/* Para que los ramos de formación fundamental y optativos tengan fondo igual */
-.fundamental-course,
-.optativo-course {
-  background-color: var(--fondo-ramo);
-  border-radius: 8px;
-  padding: 0.6rem 0.8rem;
-  font-size: 19px;
-  color: var(--color-texto);
-  border: none;
-  min-width: 160px;
-  cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
-}
+    /* ---------- Títulos especiales ---------- */
+    .titulo-fundamental,
+    .titulo-optativos {
+      background: var(--fondo-formacion-titulo);
+      color: var(--color-texto);
+      font-size: 19px;
+      font-weight: 700;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      min-width: 160px;
+      text-align: center;
+    }
 
-.fundamental-course:hover,
-.optativo-course:hover {
-  background: #f9d7cc;
-  transform: scale(1.03);
-}
+    /* ramos de formación fundamental y optativos (mismo fondo que los demás) */
+    .fundamental-course,
+    .optativo-course {
+      background: var(--fondo-ramo);
+      border-radius: 8px;
+      padding: 0.6rem 0.8rem;
+      font-size: 19px;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease;
+      min-width: 160px;
+    }
+
+    .fundamental-course:hover,
+    .optativo-course:hover {
+      background: #f9d7cc;
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular Derecho PUCV</h1>
+
+  <div id="app">
+    <!-- ---------------------- SEMESTRES ---------------------- -->
+    <section>
+      <h2>1° Semestre</h2>
+      <div class="semester">
+        <div class="course"><span class="code">DERE101</span><span class="name">Introducción al Derecho</span></div>
+        <div class="course"><span class="code">HIST101</span><span class="name">Historia del Derecho</span></div>
+        <div class="course"><span class="code">FIL101</span><span class="name">Lógica Jurídica</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>2° Semestre</h2>
+      <div class="semester">
+        <div class="course"><span class="code">DERE102</span><span class="name">Derecho Romano I</span></div>
+        <div class="course"><span class="code">DERE103</span><span class="name">Teoría de la Normatividad</span></div>
+        <div class="course"><span class="code">ECO100</span><span class="name">Economía General</span></div>
+      </div>
+    </section>
+
+    <!-- …continúa agregando más secciones de semestres según necesites… -->
+
+    <!-- ------------------ FORMACIÓN FUNDAMENTAL ------------------ -->
+    <section>
+      <h2 class="titulo-fundamental">Formación Fundamental</h2>
+      <div class="semester fundamental">
+        <div class="fundamental-course"><span class="name">Teología</span></div>
+        <div class="fundamental-course"><span class="name">Filosofía</span></div>
+        <div class="fundamental-course"><span class="name">Ética Profesional</span></div>
+      </div>
+    </section>
+
+    <!-- ----------------------- OPTATIVOS ----------------------- -->
+    <section>
+      <h2 class="titulo-optativos">Cursos Optativos</h2>
+      <div class="semester optativos">
+        <div class="optativo-course"><span class="name">Derecho Ambiental</span></div>
+        <div class="optativo-course"><span class="name">Derecho Informático</span></div>
+        <div class="optativo-course"><span class="name">Derecho Espacial</span></div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
