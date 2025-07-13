@@ -1,45 +1,88 @@
-/* Paleta rosa */
+/* ---- colores base ---- */
 :root{
-  --rosa-claro:#ffe6f7;
-  --rosa-box:#ffb3d6;
-  --rosa-border:#ff6fbd;
-  --rosa-hover:#ffa6d1;
-  --rosa-passed:#f06292;
+  --rosa-base:#ffe6f7;       /* fondo general */
+  --rosa-col:#fdd1eb;        /* fondo tarjeta semestre */
+  --rosa-borde:#ff6fbd;      /* bordes tarjeta y cuadro */
+  --rosa-cuadro:#ffffff;     /* fondo cuadro ramo */
+  --rosa-hover:#ffe0f2;      /* hover cuadro */
+  --rosa-ok:#f06292;         /* ramo aprobado */
 }
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
 
-body{background:var(--rosa-claro);padding:2rem;color:#333}
-h1{text-align:center;margin-bottom:2rem;font-size:2rem}
-
-section{margin-bottom:3rem}
-section h2{font-size:1.3rem;margin-bottom:1rem;text-transform:uppercase}
-
-.semester{
-  display:flex;
-  flex-direction:column;          /* ► cada ramo en vertical */
-  gap:1rem;
+body{
+  background:var(--rosa-base);
+  padding:2rem;
+  color:#333;
 }
 
-/* --- cuadro de ramo --- */
-.course{
+/* ---------- título ---------- */
+h1{
+  text-align:center;
+  margin-bottom:2rem;
+  font-size:2rem;
+}
+
+/* ---------- contenedor columnas ---------- */
+#app{
+  display:flex;
+  flex-wrap:wrap;           /* varias filas si hay muchas columnas */
+  gap:2rem;
+  justify-content:center;
+}
+
+/* ---------- tarjeta de semestre ---------- */
+section{
+  flex:1 1 250px;           /* mínimo 250 px, crece si hay espacio */
+  background:var(--rosa-col);
+  border:2px solid var(--rosa-borde);
+  border-radius:12px;
   padding:1rem;
-  border:2px solid var(--rosa-border);
+  max-width:300px;
+}
+
+/* título de semestre */
+section h2{
+  text-align:center;
+  margin-bottom:1rem;
+  font-size:1.1rem;
+  text-transform:uppercase;
+  color:#dd2e8b;
+}
+
+/* lista vertical de ramos dentro de la tarjeta */
+.semester{
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+}
+
+/* ---------- cuadro individual de ramo ---------- */
+.course{
+  background:var(--rosa-cuadro);
+  border:2px solid var(--rosa-borde);
   border-radius:8px;
-  background:var(--rosa-box);
+  padding:.65rem .75rem;
   cursor:pointer;
   position:relative;
-  transition:transform .15s ease,background .15s ease;
+  transition:background .15s ease,transform .15s ease;
 }
 
 .course:hover{background:var(--rosa-hover);transform:scale(1.02)}
 
-.course span.code{font-weight:700}
-.course span.name{display:block;margin-top:.25rem;font-size:.9rem}
-.course span.credits{display:block;margin-top:.25rem;font-size:.8rem;color:#444}
+/* texto dentro del cuadro */
+.course span.code{font-weight:700;font-size:.85rem}
+.course span.name{display:block;margin-top:.1rem;font-size:.78rem}
+.course span.credits{display:block;margin-top:.2rem;font-size:.72rem;color:#555}
 
-/* bloqueo / aprobado */
+/* ---------- estados ---------- */
+/* bloqueado */
 .course.locked{opacity:.4;pointer-events:none}
-.course.locked::after{content:"🔒";position:absolute;top:8px;right:8px;font-size:1.1rem}
-.course.passed{background:var(--rosa-passed);color:#fff}
-.course.passed::after{content:"✓";position:absolute;top:8px;right:8px;font-size:1.1rem}
+.course.locked::after{content:"🔒";position:absolute;top:6px;right:6px;font-size:1rem}
+
+/* aprobado */
+.course.passed{
+  background:var(--rosa-ok);
+  color:#fff;
+}
+.course.passed::after{content:"✓";position:absolute;top:6px;right:6px;font-size:1rem}
