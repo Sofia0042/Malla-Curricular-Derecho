@@ -1,35 +1,70 @@
-body {
-  font-family: sans-serif;
-  background: #f4f4f4;
-  padding: 2rem;
-  color: #333;
+/* Paleta rosa */
+:root{
+  --rosa-claro:#ffe6f7;
+  --rosa-box:#ffb3d6;
+  --rosa-border:#ff6fbd;
+  --rosa-hover:#ffa6d1;
+  --rosa-passed:#f06292;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 2rem;
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
+
+body{
+  background:var(--rosa-claro);
+  padding:2rem;
+  color:#333;
 }
 
-.malla {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+h1{
+  text-align:center;
+  margin-bottom:2rem;
+  font-size:2rem;
 }
 
-.ramo {
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+section{
+  margin-bottom:3rem;
 }
 
-.ramo:hover {
-  transform: scale(1.03);
+section h2{
+  font-size:1.3rem;
+  margin-bottom:1rem;
+  text-transform:uppercase;
+  letter-spacing:.5px;
 }
 
-.detalle {
-  display: none;
-  margin-top: 0.5rem;
+.semester{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+}
+
+/* cuadro de ramo */
+.course{
+  width:260px;
+  padding:1rem;
+  border:2px solid var(--rosa-border);
+  border-radius:8px;
+  background:var(--rosa-box);
+  cursor:pointer;
+  position:relative;
+  transition:transform .15s ease,background .15s ease;
+}
+
+.course span.code{font-weight:700}
+.course span.name{display:block;margin-top:.25rem;font-size:.9rem}
+
+.course:hover{background:var(--rosa-hover);transform:scale(1.03)}
+
+/* bloqueo / aprobado */
+.course.locked{opacity:.4;pointer-events:none}
+.course.locked::after{
+  content:"🔒";
+  position:absolute;top:8px;right:8px;font-size:1.1rem
+}
+.course.passed{
+  background:var(--rosa-passed);color:#fff
+}
+.course.passed::after{
+  content:"✓";
+  position:absolute;top:8px;right:8px;font-size:1.1rem
 }
