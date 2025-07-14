@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malla Curricular Derecho PUCV</title>
 
-  <!-- Google Fonts: Playfair Display for the main title -->
+  <!-- Google Fonts: Playfair Display for title -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ---------- Colores ---------- */
     :root {
       --fondo-pagina: #faf4ea;
       --color-semestre: #99c2c6;
@@ -23,126 +22,106 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: "Aptos", "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif;
+      font-family: "Aptos", "Segoe UI", sans-serif;
       color: var(--color-texto);
     }
 
     body {
       background: var(--fondo-pagina);
-      padding: 2rem;
-      overflow-x: auto;
+      padding: 1rem;
+      overflow: hidden;
     }
 
-    /* ---------- Título principal ---------- */
     h1 {
       font-family: "Playfair Display", serif;
-      font-size: 79.8px;
+      font-size: 36px;
       color: var(--color-titulo);
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
 
-    /* ---------- CONTENEDOR de filas ---------- */
     #app {
       display: flex;
       flex-direction: column;
       gap: 0.4px;
+      align-items: center;
     }
 
-    /* ---------- FILA de semestre ---------- */
     section {
+      width: 100%;
+      max-width: 1000px;
       display: flex;
+      flex-direction: column;
       align-items: flex-start;
-      gap: 0.4px;
+      gap: 0.2rem;
+      margin-bottom: 0.5rem;
     }
 
-    /* etiqueta de semestre */
     section h2 {
-      min-width: 140px;
-      padding: 0.6rem 0.8rem;
+      background: var(--color-semestre);
       border-radius: 8px;
-      font-size: 19px;
+      font-size: 16px;
       text-transform: uppercase;
       text-align: center;
-      line-height: 1.2;
-      background: var(--color-semestre);
-      color: var(--color-texto);
-      font-family: "Aptos", "Segoe UI", "Roboto", sans-serif;
+      padding: 0.4rem;
+      width: 100%;
     }
 
-    /* contenedor de ramos */
     .semester {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       gap: 0.4px;
+      width: 100%;
     }
 
-    /* ---------- cuadro individual de ramo ---------- */
     .course {
       background: var(--fondo-ramo);
       border-radius: 8px;
-      padding: 0.6rem 0.8rem;
-      cursor: pointer;
-      position: relative;
-      transition: background 0.15s ease, transform 0.15s ease;
-      min-width: 160px;
-      font-size: 19px;
-    }
-
-    .course:hover {
-      background: #f9d7cc;
-      transform: scale(1.03);
+      padding: 0.4rem;
+      font-size: 14px;
+      text-align: center;
     }
 
     .course span.code {
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
     }
 
     .course span.name {
       display: block;
       margin-top: 0.12rem;
-      font-size: 0.78rem;
-      word-break: break-word;
+      font-size: 0.75rem;
     }
 
-    .course span.credits { display: none; }
-
-    /* ---------- Estados opcionales ---------- */
-    .course.locked { opacity: 0.35; pointer-events: none; }
-    .course.locked::after { content: "🔒"; position: absolute; top: 6px; right: 6px; }
-    .course.passed { background: var(--fondo-formacion-titulo); }
-    .course.passed::after { content: "✓"; position: absolute; top: 6px; right: 6px; }
-
-    /* ---------- Títulos especiales ---------- */
     .titulo-fundamental,
     .titulo-optativos {
       background: var(--fondo-formacion-titulo);
       color: var(--color-texto);
-      font-size: 19px;
+      font-size: 16px;
       font-weight: 700;
-      padding: 0.6rem 0.8rem;
+      padding: 0.4rem;
       border-radius: 8px;
-      min-width: 160px;
+      width: 100%;
       text-align: center;
-      font-family: "Aptos", "Segoe UI", "Roboto", sans-serif;
     }
 
-    /* ramos de formación fundamental y optativos */
+    .fundamental,
+    .optativos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.4px;
+      width: 100%;
+    }
+
     .fundamental-course,
     .optativo-course {
       background: var(--fondo-ramo);
       border-radius: 8px;
-      padding: 0.6rem 0.8rem;
-      font-size: 19px;
-      cursor: pointer;
-      transition: background 0.15s ease, transform 0.15s ease;
-      min-width: 160px;
-    }
-
-    .fundamental-course:hover,
-    .optativo-course:hover {
-      background: #f9d7cc;
-      transform: scale(1.03);
+      padding: 0.4rem;
+      font-size: 14px;
+      min-width: 140px;
+      text-align: center;
     }
   </style>
 </head>
@@ -150,7 +129,6 @@
   <h1>Malla Curricular Derecho PUCV</h1>
 
   <div id="app">
-    <!-- ---------------------- SEMESTRES ---------------------- -->
     <section>
       <h2>1° Semestre</h2>
       <div class="semester">
@@ -169,22 +147,18 @@
       </div>
     </section>
 
-    <!-- …continúa agregando secciones de semestres… -->
-
-    <!-- ------------------ FORMACIÓN FUNDAMENTAL ------------------ -->
     <section>
       <h2 class="titulo-fundamental">Formación Fundamental</h2>
-      <div class="semester fundamental">
+      <div class="fundamental">
         <div class="fundamental-course"><span class="name">Teología</span></div>
         <div class="fundamental-course"><span class="name">Filosofía</span></div>
         <div class="fundamental-course"><span class="name">Ética Profesional</span></div>
       </div>
     </section>
 
-    <!-- ----------------------- OPTATIVOS ----------------------- -->
     <section>
       <h2 class="titulo-optativos">Cursos Optativos</h2>
-      <div class="semester optativos">
+      <div class="optativos">
         <div class="optativo-course"><span class="name">Derecho Ambiental</span></div>
         <div class="optativo-course"><span class="name">Derecho Informático</span></div>
         <div class="optativo-course"><span class="name">Derecho Espacial</span></div>
