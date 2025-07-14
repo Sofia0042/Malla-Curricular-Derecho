@@ -5,50 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malla Curricular Derecho PUCV</title>
 
-  <!-- Google Fonts: Playfair Display for title -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Rosario&display=swap" rel="stylesheet" />
 
   <style>
-/* ----- BODY ----- */
-body {
-  background: var(--fondo-pagina);   /* #faf4ea */
-  padding: 1rem;                     /* 2rem si quieres más margen */
-  overflow: hidden;                  /* quita el scroll horizontal/vertical */
-}
+    /* ---------- PALETA ---------- */
+    :root {
+      --fondo-pagina: #faf4ea;
+      --color-semestre: #99c2c6;
+      --color-titulo: #bd4829;
+      --color-texto: #49241f;
+      --fondo-formacion-titulo: #f4a590;
+      --fondo-ramo: #fae1ce;
+      --fondo-hover: #f9d7cc;
+    }
 
-/* ----- CAJITA DE CADA RAMO ----- */
-.course {
-  background: var(--fondo-ramo);     /* #fae1ce */
-  border-radius: 8px;
-  padding: .4rem;
-  font-size: 14px;
-  text-align: center;
+    /* ---------- RESET BÁSICO ---------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Rosario", sans-serif;
+      color: var(--color-texto);
+    }
+    body {
+      background: var(--fondo-pagina);
+      padding: 1rem;
+    }
 
-  /* tamaño mínimo para que quepa tanto el código como el nombre */
-  min-width: 140px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    /* ---------- TÍTULO GLOBAL ---------- */
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 40px;
+      color: var(--color-titulo);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
 
-  /* un borde sutil del color de los semestres para que se note la cajita */
-  box-shadow: 0 0 0 2px var(--color-semestre);  /* #99c2c6 */
+    /* ---------- LAYOUT PRINCIPAL ---------- */
+    #app {
+      display: flex;
+      gap: 8px;                 /* espacio entre columnas de semestre */
+      justify-content: center;
+      flex-wrap: wrap;          /* permite que baje si no cabe */
+    }
 
-  /* efecto hover opcional */
-  transition: background .15s ease, transform .15s ease;
-}
-.course:hover {
-  background: #f9d7cc;               /* un tono más claro al pasar el mouse */
-  transform: scale(1.03);
-}
+    /* ---------- COLUMNA DE SEMESTRE ---------- */
+    .semester-col {
+      display: flex;
+      flex-direction: column;  /* cursos hacia abajo */
+      gap: 4px;
+      min-width: 150px;
+    }
+    .semester-col h2 {
+      background: var(--color-semestre);
+      text-transform: uppercase;
+      text-align: center;
+      padding: 6px;
+      border-radius: 8px;
+      font-size: 15px;
+    }
 
-/* el código y el nombre dentro de la cajita */
-.course span.code {
-  font-weight: 700;
-  font-size: .75rem;
-}
-.course span.name {
-  margin-top: .12rem;
+    /* ---------- CAJA CURSO ---------- */
+    .course {
+      background: var(--fondo-ramo);
+      border-radius: 8px;
+      padding: 6px;
+      font-size: 13px;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .course:hover { background: var(--fondo-hover); transform: scale(1.03); }
+
+    .course span.code { font-weight: 700; font-size: 0.75rem; }
+    .course span.name { display: block; margin-top: 2px; font-size: 0.75rem; }
+
+    /* ---------- BLOQUE ESPECIAL (Fundamental / Optativos) ---------- */
+    #extras {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .extra-block { display: flex; flex-direction: column; gap: 4px; min-width: 280px; }
+    .extra-block h2 {
+      background: var(--fondo-formacion-titulo);
+      color: var(--color-texto);
+      text-align: center;
+      padding: 6px;
+      font-size: 16px;
+      border-radius: 8px;
+    }
+    .extra-courses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
+    }
+    .fundamental-course,
+    .optativo-course { background: var(--fondo-ramo); border-radius: 8px; padding: 6px; font-size: 13px; min-width: 120px; text-align: center; }
+    .fundamental-course:hover,
+    .optativo-course:hover { background: var(--fondo-hover); }
 
   </style>
 </head>
@@ -56,41 +115,27 @@ body {
   <h1>Malla Curricular Derecho PUCV</h1>
 
   <div id="app">
-    <section>
+    <!-- ======= COLUMNAS DE CADA SEMESTRE ======= -->
+    <div class="semester-col">
       <h2>1° Semestre</h2>
-      <div class="semester">
-        <div class="course"><span class="code">DERE101</span><span class="name">Introducción al Derecho</span></div>
-        <div class="course"><span class="code">HIST101</span><span class="name">Historia del Derecho</span></div>
-        <div class="course"><span class="code">FIL101</span><span class="name">Lógica Jurídica</span></div>
-      </div>
-    </section>
+      <div class="course"><span class="code">DERE101</span><span class="name">Introducción al Derecho</span></div>
+      <div class="course"><span class="code">HIST101</span><span class="name">Historia del Derecho</span></div>
+      <div class="course"><span class="code">FIL101</span><span class="name">Lógica Jurídica</span></div>
+    </div>
 
-    <section>
+    <div class="semester-col">
       <h2>2° Semestre</h2>
-      <div class="semester">
-        <div class="course"><span class="code">DERE102</span><span class="name">Derecho Romano I</span></div>
-        <div class="course"><span class="code">DERE103</span><span class="name">Teoría de la Normatividad</span></div>
-        <div class="course"><span class="code">ECO100</span><span class="name">Economía General</span></div>
-      </div>
-    </section>
+      <div class="course"><span class="code">DERE102</span><span class="name">Derecho Romano I</span></div>
+      <div class="course"><span class="code">DERE103</span><span class="name">Teoría de la Normatividad</span></div>
+      <div class="course"><span class="code">ECO100</span><span class="name">Economía General</span></div>
+    </div>
 
-    <section>
-      <h2 class="titulo-fundamental">Formación Fundamental</h2>
-      <div class="fundamental">
-        <div class="fundamental-course"><span class="name">Teología</span></div>
-        <div class="fundamental-course"><span class="name">Filosofía</span></div>
-        <div class="fundamental-course"><span class="name">Ética Profesional</span></div>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="titulo-optativos">Cursos Optativos</h2>
-      <div class="optativos">
-        <div class="optativo-course"><span class="name">Derecho Ambiental</span></div>
-        <div class="optativo-course"><span class="name">Derecho Informático</span></div>
-        <div class="optativo-course"><span class="name">Derecho Espacial</span></div>
-      </div>
-    </section>
+    <!-- ➕ Añade más columnas de semestre aquí si lo necesitas -->
   </div>
-</body>
-</html>
+
+  <!-- ======= FORMACIÓN FUNDAMENTAL & OPTATIVOS ======= -->
+  <div id="extras">
+    <div class="extra-block">
+      <h2>Formación Fundamental</h2>
+      <div class="extra-courses">
+        <div class="fundamental-course"><span cl
