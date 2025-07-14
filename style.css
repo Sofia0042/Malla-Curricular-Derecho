@@ -9,120 +9,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --fondo-pagina: #faf4ea;
-      --color-semestre: #99c2c6;
-      --color-titulo: #bd4829;
-      --color-texto: #49241f;
-      --fondo-formacion-titulo: #f4a590;
-      --fondo-ramo: #fae1ce;
-    }
+/* ----- BODY ----- */
+body {
+  background: var(--fondo-pagina);   /* #faf4ea */
+  padding: 1rem;                     /* 2rem si quieres más margen */
+  overflow: hidden;                  /* quita el scroll horizontal/vertical */
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Aptos", "Segoe UI", sans-serif;
-      color: var(--color-texto);
-    }
+/* ----- CAJITA DE CADA RAMO ----- */
+.course {
+  background: var(--fondo-ramo);     /* #fae1ce */
+  border-radius: 8px;
+  padding: .4rem;
+  font-size: 14px;
+  text-align: center;
 
-    body {
-      background: var(--fondo-pagina);
-      padding: 1rem;
-      overflow: hidden;
-    }
+  /* tamaño mínimo para que quepa tanto el código como el nombre */
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 36px;
-      color: var(--color-titulo);
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+  /* un borde sutil del color de los semestres para que se note la cajita */
+  box-shadow: 0 0 0 2px var(--color-semestre);  /* #99c2c6 */
 
-    #app {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4px;
-      align-items: center;
-    }
+  /* efecto hover opcional */
+  transition: background .15s ease, transform .15s ease;
+}
+.course:hover {
+  background: #f9d7cc;               /* un tono más claro al pasar el mouse */
+  transform: scale(1.03);
+}
 
-    section {
-      width: 100%;
-      max-width: 1000px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.2rem;
-      margin-bottom: 0.5rem;
-    }
+/* el código y el nombre dentro de la cajita */
+.course span.code {
+  font-weight: 700;
+  font-size: .75rem;
+}
+.course span.name {
+  margin-top: .12rem;
 
-    section h2 {
-      background: var(--color-semestre);
-      border-radius: 8px;
-      font-size: 16px;
-      text-transform: uppercase;
-      text-align: center;
-      padding: 0.4rem;
-      width: 100%;
-    }
-
-    .semester {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 0.4px;
-      width: 100%;
-    }
-
-    .course {
-      background: var(--fondo-ramo);
-      border-radius: 8px;
-      padding: 0.4rem;
-      font-size: 14px;
-      text-align: center;
-    }
-
-    .course span.code {
-      font-weight: 700;
-      font-size: 0.75rem;
-    }
-
-    .course span.name {
-      display: block;
-      margin-top: 0.12rem;
-      font-size: 0.75rem;
-    }
-
-    .titulo-fundamental,
-    .titulo-optativos {
-      background: var(--fondo-formacion-titulo);
-      color: var(--color-texto);
-      font-size: 16px;
-      font-weight: 700;
-      padding: 0.4rem;
-      border-radius: 8px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .fundamental,
-    .optativos {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.4px;
-      width: 100%;
-    }
-
-    .fundamental-course,
-    .optativo-course {
-      background: var(--fondo-ramo);
-      border-radius: 8px;
-      padding: 0.4rem;
-      font-size: 14px;
-      min-width: 140px;
-      text-align: center;
-    }
   </style>
 </head>
 <body>
