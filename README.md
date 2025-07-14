@@ -1,1 +1,1 @@
-# Malla-Curricular-Derecho
+# Malla-Curricular-Derecho-PUCV
