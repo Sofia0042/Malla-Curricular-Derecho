@@ -28,10 +28,9 @@
       font-family: "Rosario", sans-serif;
       color: var(--color-texto);
     }
-    body {
-      background: var(--fondo-pagina);
-      padding: 1rem;
-    }
+    body 
+<body style="background:#ff0">
+
 
     /* ---------- TÍTULO GLOBAL ---------- */
     h1 {
